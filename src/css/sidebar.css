@@ -1,0 +1,107 @@
+.sidebar {
+    height: 100vh;
+    min-height: 500px;
+    width: 250px;
+    overflow: hidden;
+    transition: width 0.2s ease; 
+    background-color: var(--dark-blue);
+    color: var(--white);
+    position: relative;
+}
+
+.title{ 
+    height: 60px;
+    border-bottom: 2px solid rgba(255,255,255,0.2);
+    display: flex;
+    align-items: center;
+
+}
+
+.title a {
+    padding: 0 30px;
+}
+
+.title a span {
+    font-size: 22px;
+}
+
+.nav-links a, .user-content a{
+    width: 100%;
+    display: block;
+    transition: all 0.2s ease;
+    font-size: 14px;
+}
+
+.nav-links a:hover, .user-content a:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+
+.sidebar a, .sidebar a:visited {
+    color: var(--white);
+    text-decoration: none;
+}
+
+.sidebar a {
+    padding: 10px 0;
+}
+
+.collapsed{
+    width: 60px;
+}
+
+.centered {
+    width: 250px;
+}
+
+.hidden{
+    opacity: 0;
+}
+
+
+.sidebar .icon {
+    font-size: 20px;
+    width: 60px;
+    text-align: left;
+}
+
+.sidebar .centered {
+    display: flex;
+    align-items: center;
+}
+
+.link-text{
+    transition: opacity 0.2s ease;
+    resize: none;
+}
+
+
+.sidebar .user-content {
+    border-top: 2px solid rgba(255,255,255,0.2);
+    position: absolute;
+    bottom: 0;
+}
+
+.sidebar .user-content > div{
+    width: 100%;
+}
+
+.sidebar .dumbbell {
+    color: var(--light-blue);
+}
+
+.collapse {
+    display: flex;
+    padding: 10px 20px;
+    border-top: 2px solid rgba(255,255,255,0.2);
+    width: 60px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.open {
+    justify-content: right;
+}
+
+.open .chevron {
+    transform: rotate(180deg);
+}
