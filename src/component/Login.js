@@ -10,7 +10,7 @@ export default function Login(props) {
   const [password, setPassword] = useState('')
   const [authError, setAuthError] = useState('')
   const [error, setError] = useState(false)
-
+  
   const handleKeyPress = (e) => {
     if(e.key === 'Enter'){
       login()
@@ -50,7 +50,7 @@ export default function Login(props) {
     return true
 
 
-  }
+  } 
 
   const login = async () => {
     if(!valid()) return 
@@ -89,10 +89,10 @@ export default function Login(props) {
             </div>
             
             <div className="btn-container">
-              <button onClick={login} className="login-btn" >SIGN IN</button>
+              <button onClick={login} className="btn" >SIGN IN</button>
             </div>
             <div className='signup-text'>
-              <p>Don't have an account? <Link to="/create-account" >Create an account</Link></p>
+              <p><Link to="/create-account" >Create an account</Link></p>
             </div>              
 
           

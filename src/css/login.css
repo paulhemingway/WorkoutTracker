@@ -1,6 +1,6 @@
 .login-container {
     height: 600px;
-    width: 1200px;
+    width: 1000px;
     background-color: var(--white);
     border-radius: 25px;
     position: absolute;
@@ -9,31 +9,31 @@
     transform: translate(-50%, -50%);
     display: flex;
     overflow: hidden;
-    box-shadow: 0 0 50px rgba(0,0,0,0.1);
+    box-shadow: 0 0 50px rgba(0,0,0,0.login-container .1);
 }
 
-h2, h3 {
+.login-container h2, h3 {
     color: var(--dark-blue);
 }
 
-h2 {
+.login-container h2 {
     margin-top: 30px;
     text-align: center;
 }
 
-.login {
+.login-container .login {
     position: relative;
     flex: 60%;
     padding: 40px;
     
 }
 
-.slideshow {
+.login-container .slideshow {
     flex: 40%;
     background-color: var(--dark-blue);
 }
 
-.login-form {
+.login-container .login-form {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -41,7 +41,7 @@ h2 {
     width: 60%;
 }
 
-.inputs {
+.login-container .inputs {
     margin: 30px 0;
 }
 
@@ -59,11 +59,11 @@ input::placeholder {
     color: var(--blue);
 }
 
-.email {
+.login-container .email {
     margin-bottom: 15px;
 }
 
-.login-btn {
+.btn {
     width: 60%;
     padding: 10px 0;
     border-radius: 40px;  
@@ -76,28 +76,51 @@ input::placeholder {
     text-align: center;
 }
 
-.login-btn:hover {
-    filter:brightness(1.1)
+.login-container .login-btn:hover {
+    filter:brightness(1.login-container .1)
 }
 
-.btn-container{
+.login-container .btn-container{
     text-align: center;
     margin-bottom: 40px;
 }
 
-.signup-text{
+.login-container .signup-text{
     text-align: center;
 }
 
-.signup-text a {
+.login-container .signup-text a {
     color: var(--dark-blue);
 }
 
-.error-msg {
+.login-container .error-msg {
     margin-top: 15px;
     padding: 5px;
     background-color: rgb(255, 206, 206);
     font-size: 14px;
     color: rgb(134, 0, 0);
-    border: 1px solid rgba(134,0,0,0.1)
+    border: 1px solid rgba(134,0,0,0.login-container .1)
+}
+
+@media (orientation: portrait){
+    .login-container .login-container {
+        display: block;
+        height: 100%;
+        width: 100%;
+        border-radius: 0;
+    }
+    .login-container .login-form {
+        all: unset;
+        
+        background-color: red;
+        position: relative;
+    }
+
+    .login-container .login{
+        position: absolute;
+        width: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
 }

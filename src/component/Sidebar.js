@@ -26,8 +26,8 @@ export default function Sidebar(props) {
         </Link>
       </div>
 
-
-      <div className='nav-links'>
+      {props.loggedIn && 
+        <div className='nav-links'>
         <Link to="/">
           <div className="centered">
             <HiHome className="icon"/>
@@ -35,6 +35,8 @@ export default function Sidebar(props) {
           </div>
         </Link>
       </div>
+      }
+      
 
       
 

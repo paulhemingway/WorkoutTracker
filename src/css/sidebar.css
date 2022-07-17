@@ -105,3 +105,7 @@
 .open .chevron {
     transform: rotate(180deg);
 }
+
+@media (orientation: portrait){
+    
+}

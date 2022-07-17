@@ -8,7 +8,8 @@ import {
   signInWithEmailAndPassword, 
   signOut
 } from "firebase/auth"
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+
 
 import Home from "./component/Home"
 import Login from "./component/Login"
@@ -23,9 +24,6 @@ function App() {
   const [userInfo, setUserInfo] = useState({})
   const [newUser, setNewUser] = useState(false);
   const [loggedIn, setLoggedIn] = useState(true)
-
-  
-  
 
   // whenever authentication changes (login/out) do something
   onAuthStateChanged(auth, (currentUser) => {
@@ -94,31 +92,27 @@ function App() {
   }
 
 
-  
-
-
-
-
   const logout = async () => {
     await signOut(auth)
     setUserInfo({})
   }
 
 
-  return <div className="app-container"> 
+  return <div className={`app-container`} > 
     <Router>
       
-      <div>
+      
+      <div className="sidebar-container">
         <Sidebar 
           loggedIn={loggedIn} 
           user={userInfo} 
           logout={logout} 
            />
-        {/* <button onClick={register}>register</button> */}
+        {/* <button onClick={register}>register</button> */} 
       </div>
     
     {/* https://www.youtube.com/watch?v=SLfhMt5OUPI&t=504s watch this vid  */}
-      <div className="content-container">
+      <div className="content-container ">
         <Routes>
           <Route path="/" element={
             <PrivateRoute loggedIn={loggedIn} component={<Home />}/>}></Route>
