@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { db, auth } from './firebase-config'
-import { collection, getDoc, setDoc, doc  } from 'firebase/firestore'
+import { collection, getDoc, setDoc, doc, query, where, getDocs  } from 'firebase/firestore'
 import "./App.css"
 import { 
   createUserWithEmailAndPassword, 
@@ -8,7 +8,7 @@ import {
   signInWithEmailAndPassword, 
   signOut
 } from "firebase/auth"
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 
 
 import Home from "./component/Home"
@@ -22,8 +22,8 @@ import PrivateRoute from "./component/PrivateRoute"
 function App() {
   const [user, setUser] = useState({})
   const [userInfo, setUserInfo] = useState({})
-  const [newUser, setNewUser] = useState(false);
   const [loggedIn, setLoggedIn] = useState(true)
+  const [location, setLocation] = useState('/')
 
   // whenever authentication changes (login/out) do something
   onAuthStateChanged(auth, (currentUser) => {
@@ -31,26 +31,9 @@ function App() {
     setLoggedIn(currentUser !== null)
 
   })
-    // when user state changes
-  useEffect(() => {
-      const add = async function() {
-        // if it's a user that just registered...
-        if(newUser){
-          await setDoc(doc(db, "users", "pshfmg"), ({
-            fName: "Paul",
-            lName: "Hemingway",
-            uid: user.uid
-          }))
-        }
-      }
 
-      // run add command, then get user info 
-      add().then(() => {
-        if(user !== null && Object.keys(user).length !== 0){
-          getUserInfo()
-        }
-      })
-      setNewUser(false)
+  useEffect(() => {
+    if(user) getUserInfo(user.uid)
   }, [user])
   
   // triggers when userInfo is altered, only console logs if it's not empty thoough
@@ -59,38 +42,25 @@ function App() {
     }
   }, [userInfo])
 
-  const getUserInfo = async () => {
+  const getUserInfo = async (uid) => {
     if(user !== null && Object.keys(user).length !== 0){
-        let docSnap
+        let querySnapshot
         // soon this will grab username from the uid, provided by the auth information
         const getSingleUser = async function() {
-          const docRef = doc(db, "users", "pshfmg")
-          docSnap = await getDoc(docRef)
+          const usersRef = collection(db, "users")
+          const q = query(usersRef, where("uid", "==", uid))
+
+          querySnapshot = await getDocs(q)
         }
-      
         getSingleUser().then(() => {
           setUserInfo({
-            id: docSnap.id,
-            info: docSnap.data()
+            id: querySnapshot.docs[0].id,
+            info: querySnapshot.docs[0].data()
           })
         })
         console.log(userInfo)
     } 
   }
-
-  const register = async () => {
-    try {
-      const newUser = await createUserWithEmailAndPassword(
-        auth,
-        "phemingway@ymail.com",
-        "password"
-      )
-      setNewUser(true)
-    } catch (err) {
-      console.error(err.code)
-    }
-  }
-
 
   const logout = async () => {
     await signOut(auth)

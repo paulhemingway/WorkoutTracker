@@ -67,6 +67,7 @@ export default function Login(props) {
       msg = msg.charAt(0).toUpperCase() + msg.slice(1)
       setAuthError("Authentication Failed: " + msg)
     }
+    props.setUserInformation()
   }
 
   return props.loggedIn ? <Navigate to="/"/>:

@@ -1,12 +1,6 @@
 .login-container {
-    height: 600px;
-    width: 1000px;
+    height: 100%;
     background-color: var(--white);
-    border-radius: 25px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     display: flex;
     overflow: hidden;
     box-shadow: 0 0 50px rgba(0,0,0,0.login-container .1);
@@ -21,6 +15,11 @@
     text-align: center;
 }
 
+.login-container h3 {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
 .login-container .login {
     position: relative;
     flex: 60%;
@@ -30,7 +29,7 @@
 
 .login-container .slideshow {
     flex: 40%;
-    background-color: var(--dark-blue);
+    background-color: var(--blue);
 }
 
 .login-container .login-form {
@@ -39,21 +38,25 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 60%;
+    margin: 0 auto;
 }
 
 .login-container .inputs {
     margin: 30px 0;
+    
 }
 
-input[type=password], input[type=text] {
+.login-container input[type=password], .login-container input[type=text] {
     border: 0;
     display: block;
     width: 100%;
+    max-width: 500px;
     padding: 10px 8px;
     background-color: var(--background);
     background-image: linear-gradient(90deg, var(--background), #b0e1ff);
     border-left: 4px solid var(--green);
-}
+    margin: 0 auto;
+} 
 
 input::placeholder {
     color: var(--blue);
@@ -63,8 +66,11 @@ input::placeholder {
     margin-bottom: 15px;
 }
 
+
+
 .btn {
     width: 60%;
+    max-width: 300px;
     padding: 10px 0;
     border-radius: 40px;  
     border: 0;  
@@ -103,24 +109,27 @@ input::placeholder {
 }
 
 @media (orientation: portrait){
-    .login-container .login-container {
+    .login-container {
         display: block;
         height: 100%;
         width: 100%;
         border-radius: 0;
+        padding: 30vh 0;
     }
     .login-container .login-form {
         all: unset;
         
-        background-color: red;
         position: relative;
     }
 
     .login-container .login{
-        position: absolute;
-        width: 100%;
-        top: 50%;
-        transform: translateY(-50%);
+
+        width: auto;
+
+    }
+
+    .login-container .slideshow {
+        display: none;
     }
 
 }

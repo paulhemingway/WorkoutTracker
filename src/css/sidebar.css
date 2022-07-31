@@ -2,12 +2,22 @@
     height: 100vh;
     min-height: 500px;
     width: 250px;
-    overflow: hidden;
+
     transition: width 0.2s ease; 
     background-color: var(--dark-blue);
     color: var(--white);
     position: relative;
 }
+
+.clearfix:before,
+.clearfix:after {
+    content: ".";    
+    display: block;    
+    height: 0;    
+    overflow: hidden; 
+}
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; } /* IE < 8 */
 
 .title{ 
     height: 60px;
@@ -107,5 +117,10 @@
 }
 
 @media (orientation: portrait){
-    
+    .sidebar {
+        width: 60px;
+    }
+    .collapse {
+        display: none;
+    }
 }

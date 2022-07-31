@@ -8,7 +8,10 @@ import { FaUserAlt } from 'react-icons/fa'
 import { IoChevronForward } from 'react-icons/io5' 
 
 
+
+
 export default function Sidebar(props) {
+  
   const [collapsed, setCollapsed] = useState(false)
 
   const toggleCollapse = function () {
@@ -16,12 +19,12 @@ export default function Sidebar(props) {
   }
     
   return (
-    <div className={`sidebar ${collapsed ? 'collapsed' : ''}`}>
+    <div className={`sidebar clearfix ${collapsed ? 'collapsed' : ''}`}>
       <div className='title'>
         <Link to="/">
           <div className="centered">
             <BiDumbbell className="dumbbell icon"/>
-            <span className={`link-text ${collapsed ? 'hidden' : ''}`}>Workout</span>
+            <span className={`link-text ${collapsed ? 'hidden' : ''}`}>LiftHub</span>
           </div>
         </Link>
       </div>
@@ -36,21 +39,17 @@ export default function Sidebar(props) {
         </Link>
       </div>
       }
-      
-
-      
-
         <div className='user-content'>
-          {props.loggedIn && props.user.info !== undefined &&
+          {props.loggedIn &&
             <div>
               <Link to={'/profile/' + props.user.id}>
-                <div className="centered">
+                <div className="centered link">
                   <FaUserAlt className="icon"/>
                   <span className={`link-text ${collapsed ? 'hidden' : ''}`}>{props.user.id}</span>
                 </div>
               </Link>
               <Link to='/' onClick={props.logout}>
-                <div className="centered">
+                <div className="centered link">
                   <BiLogOut className="icon"/>
                   <span className={`link-text ${collapsed ? 'hidden' : ''}`}>Log Out</span>
                 </div>
@@ -62,14 +61,14 @@ export default function Sidebar(props) {
           {(!props.loggedIn) &&
             <div>
               <Link to="/login" >
-                <div className="centered">
+                <div className="centered link">
                   <BiLogIn className="icon"/>
                   <span className={`link-text ${collapsed ? 'hidden' : ''}`}>Login</span>
                 </div>
               </Link>
 
               <Link to="/create-account">
-                <div className="centered">
+                <div className="centered link">
                   <HiUserAdd className="icon"/>
                   <span className={`link-text ${collapsed ? 'hidden' : ''}`}>Create Account</span>
                 </div>

@@ -4,7 +4,6 @@ export default function Profile(props) {
 
     const {id } = useParams()
 
-    console.log(id)
   return (
     <div>
         {id}'s profile

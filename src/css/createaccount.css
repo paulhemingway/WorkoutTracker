@@ -1,30 +1,94 @@
-.create-account {
-    height: 600px;
-    width: 1000px;
+.create-account-container {
+    height: 100%;
     background-color: var(--white);
-    border-radius: 25px;
-    overflow: hidden;
-    box-shadow: 0 0 50px rgba(0,0,0,0.login-container .1);
-    padding: 40px;
-    position: relative;
-    
+    display:flex;
 }
 
-.create-account h2 {
+.create-account-container .center {
+    flex: 60%;
+    display: table;
+    justify-content: center;
+    align-content: center;
+}
+
+.create-account-container .create-account{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.create-account-container .slideshow {
+    flex: 40%;
+    background-color: var(--blue);
+}
+
+.create-account-container h2 {
     text-align: center;
-    margin-top: 30px;
+
 
 }
 
-.create-account > div{
-    
-    border: 2px solid red;
+.create-account h3 {
     width: 80%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+    margin: 0 auto;
+    max-width: 650px;
+}
+
+.create-account-container .create-account > div{
+    margin: 0 auto;
+    width: 80%;
+    max-width: 650px;
 }
 
 
+.create-account-container .btn-container {
+    text-align: center;
+    margin-bottom: 30px;
+}
 
+.login-text {
+    text-align: center;
+}
+
+.row {
+    display: flex;
+}
+.row > div {
+    flex: 50%;
+}
+
+.firstname-cont, .firstpass-cont, .username-cont {
+    margin-right: 20px;
+}
+
+.create-account input{
+    border: 0;
+    display: block;
+    width: 100%;
+    padding: 10px 8px;
+    background-color: var(--background);
+    background-image: linear-gradient(90deg, var(--background), #b0e1ff);
+    border-left: 4px solid var(--green);
+    margin: 0 auto;
+}
+
+.create-account .input-err {
+    border-left: 4px solid rgb(191,0,0);
+}
+
+.input-error-msg {
+    font-size: 13px;
+    color: rgb(191, 0, 0);
+    padding: 2px 0 0 12px;
+    height: 22px;
+    width: 100%;
+}
+
+.create-account .row {
+    margin: 5px 0;
+}
+
+@media (orientation: portrait){
+    .create-account-container .slideshow{
+        display: none;
+    }
+}
